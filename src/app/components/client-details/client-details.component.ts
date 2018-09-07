@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Client} from '../../models/Client';
+import {ClientService} from '../../services/client.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {FlashMessagesService} from 'angular2-flash-messages';
 
 @Component({
   selector: 'bs-client-details',
@@ -6,10 +10,41 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./client-details.component.scss']
 })
 export class ClientDetailsComponent implements OnInit {
+  id: string;
+  client: Client;
+  hasBalance: boolean = false;
+  showBalanceUpdateInput: boolean = false;
 
-  constructor() { }
+  constructor(
+    private clientService: ClientService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private flashMessage: FlashMessagesService
+  ) {
+  }
 
   ngOnInit() {
+    // get id from url when component loads
+    this.id = this.route.snapshot.params['id'];
+    // get client
+    this.clientService.getClient(this.id).subscribe(client => {
+      if (client != null) {
+        if (client.balance > 0) {
+          this.hasBalance = true;
+        }
+      }
+
+      this.client = client;
+      console.log(this.client);
+    });
+
+  }
+
+  updateBalance() {
+    this.clientService.updateClient(this.client);
+    this.flashMessage.show('Balance updated', {
+      cssClass: 'alert-success', timeout: 4000
+    });
   }
 
 }
