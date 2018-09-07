@@ -19,6 +19,9 @@ import {environment} from '../environments/environment';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {AngularFireAuthModule} from '@angular/fire/auth';
+import {FormsModule} from '@angular/forms';
+import {ClientService} from './services/client.service';
+import {FlashMessagesModule} from 'angular2-flash-messages';
 
 @NgModule({
   declarations: [
@@ -39,11 +42,13 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase, 'clientpanel'),
+    FlashMessagesModule.forRoot(),
     AngularFirestoreModule,
     AngularFireAuthModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [ClientService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
