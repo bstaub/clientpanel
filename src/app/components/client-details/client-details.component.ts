@@ -47,4 +47,15 @@ export class ClientDetailsComponent implements OnInit {
     });
   }
 
+  onDeleteClick() {
+    if (confirm('Möchten Sie den Eintrag wirklich löschen?')) {
+      this.clientService.deleteClient(this.client);
+      this.flashMessage.show('Client entfernt', {
+        cssClass: 'alert-success', timeout: 4000
+      });
+      this.router.navigate(['/']);
+
+    }
+  }
+
 }
