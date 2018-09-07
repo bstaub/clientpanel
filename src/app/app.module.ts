@@ -23,6 +23,7 @@ import {FormsModule} from '@angular/forms';
 import {ClientService} from './services/client.service';
 import {FlashMessagesModule} from 'angular2-flash-messages';
 import {AuthService} from './services/auth.service';
+import {AuthGuard} from './guards/auth.guard';
 
 @NgModule({
   declarations: [
