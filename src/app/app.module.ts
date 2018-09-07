@@ -15,6 +15,11 @@ import { RegisterComponent } from './components/register/register.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 
+import {environment} from '../environments/environment';
+import {AngularFireModule} from '@angular/fire';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
+import {AngularFireAuthModule} from '@angular/fire/auth';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +37,11 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase, 'clientpanel'),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
