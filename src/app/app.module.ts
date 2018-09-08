@@ -24,6 +24,7 @@ import {ClientService} from './services/client.service';
 import {FlashMessagesModule} from 'angular2-flash-messages';
 import {AuthService} from './services/auth.service';
 import {AuthGuard} from './guards/auth.guard';
+import {SettingsService} from './services/settings.service';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,7 @@ import {AuthGuard} from './guards/auth.guard';
     AngularFirestoreModule,
     FormsModule
   ],
-  providers: [ClientService, AuthService],
+  providers: [ClientService, AuthService, SettingsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
