@@ -9,6 +9,9 @@ import * as express from 'express';
 import { join } from 'path';
 import { readFileSync } from 'fs';
 
+import 'localstorage-polyfill';
+global['localStorage'] = localStorage;
+
 (global as any).WebSocket = require('ws');
 (global as any).XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 

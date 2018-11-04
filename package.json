@@ -11,7 +11,8 @@
     "build:ssr": "npm run build:client-and-server-bundles && npm run webpack:server",
     "serve:ssr": "node dist/server",
     "build:client-and-server-bundles": "ng build --prod && ng run clientpanel:server",
-    "webpack:server": "webpack --config webpack.server.config.js --progress --colors"
+    "webpack:server": "webpack --config webpack.server.config.js --progress --colors",
+    "start:heroku": "node dist/server"
   },
   "private": true,
   "dependencies": {
@@ -35,6 +36,7 @@
     "firebase": "^5.4.2",
     "font-awesome": "^4.7.0",
     "jquery": "^3.3.1",
+    "localstorage-polyfill": "^1.0.1",
     "popper.js": "^1.14.4",
     "rxjs": "^6.0.0",
     "ts-loader": "^5.3.0",
