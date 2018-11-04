@@ -41,7 +41,7 @@ import {SettingsService} from './services/settings.service';
     NotFoundComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'clientpanel' }),
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase, 'clientpanel'),
     FlashMessagesModule.forRoot(),
